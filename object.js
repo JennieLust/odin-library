@@ -1,22 +1,28 @@
 const body = document.querySelector("body");
 const bookContainer = document.querySelector(".book-container");
 const addButton = document.querySelector("#new-book-btn")
+const form = document.querySelector(".form-popup")
 
-addButton.addEventListener('click', () => {
+
+
+addButton.addEventListener('click', (event) => {
     openForm();
 })
+
 
 let myLibrary = [];
 
 /*
 
 Add a NEW BOOK button that brings up a form allowing users to input the details for the new book: 
-    author - Text, 
-    title - text, 
-    number of pages - int,
-    whether it’s been read - boolean - checkmark
     and anything else you might want.
 
+Add code that translates form values into javascript object
+    read form value
+    send to ?
+    create object w it
+
+Clear form when subm / closed 
 
  */
 
@@ -28,11 +34,29 @@ function closeForm() {
     document.getElementById("myForm").style.display = "none";
 }
 
+form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    submitForm()})
+
+function submitForm(form) {
+    var read = "";
+    if (form.read.checked === true) {
+        read = "read" 
+    } else {
+        read = "not read"
+    }
+
+    var temp = new Book(form.title.value, form.author.value, form.pages.value, read)
+    addBookToLibrary(temp);
+    displayBooks();
+
+}
 
 
 function displayBooks() {
 
     /* iterates through myLibrary array and creates a grid item */
+    bookContainer.innerHTML = "";
     myLibrary.forEach(book => {
         var card = document.createElement("div");
         card.className = "card";

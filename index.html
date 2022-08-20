@@ -240,23 +240,23 @@
     <div class="book-container">
     </div>
     <div class="form-popup" id="myForm">
-        <form action="" class="form-container">
+        <form action="" method="post" class="form-container">
             <h1>New book</h1>
 
             <label for ="title">Title</label>
-            <input type="text" placeholder="Enter title" value="title" name="title" required>
+            <input type="text" placeholder="Enter title" name="title" required>
 
             <label for ="author">Author</label>
-            <input type="text" placeholder="Enter author" value= "author" name="author" required>
+            <input type="text" placeholder="Enter author" name="author" required>
             
             <label for ="pages">Pages</label>
-            <input type="number" placeholder="Enter number of pages" value="pages" name="pages" min="1" required>
+            <input type="number" placeholder="Enter number of pages" name="pages" min="1" required>
             
             <label for="read" value="read" class="container">Read?
             <input type="checkbox" name="read">
             <span class="checkmark"></span></label>
             
-            <button type="submit" class="btn">Add new book</button>
+            <button type="submit" class="btn" onClick="submitForm(this.form)">Add new book</button>
             <button type="button" class="btn-cancel" onClick="closeForm()">Close</button>
         </form>
 
