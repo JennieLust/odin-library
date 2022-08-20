@@ -7,23 +7,27 @@ body {
     justify-content: center;
     align-items: center;
 }
+
 .book-container {
     display: grid;
     grid-auto-rows: minmax(250px, 1fr);
     grid-template-columns: 220px 220px 220px;
     gap: 40px;
     padding: 20px;
-
 }
+
 .card {
     background-color: #2aad62;
+    position: relative;
     padding: 20px;
     padding-bottom: 40px;
-    box-shadow: 2px 2px 2px rgb(5, 56, 49);
+    box-shadow: 2px 2px 2px #053831;
     border-left: 15px solid #1e673e;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
     border-image: linear-gradient(to bottom, rgb(30, 103, 62), greenyellow) 0 1;
+
+
 }
 
 .title {
@@ -32,6 +36,50 @@ body {
     font-variant: small-caps;
     letter-spacing: 1px;
     margin-bottom: 2px;
+}
+
+.icon-buttons{
+    text-align: center;
+    position: absolute;
+    bottom: 12px;
+    display:flex;
+    justify-content: space-between;
+    margin-top: auto;
+    left: 12px;
+    
+}
+
+.remove-button, .read-button {
+    background-color: none;
+    background-image: none;
+    width: 30px;
+    height: 30px;
+    margin: 2px;
+    filter: invert(15%) sepia(10%) saturate(5193%) hue-rotate(131deg) brightness(97%) contrast(96%);
+}
+
+
+.remove-button:hover {
+    /* filter black to red */
+    filter: invert(27%) sepia(7%) saturate(4155%) hue-rotate(314deg) brightness(92%) contrast(86%);
+    background-image: none;
+    background-color: none;
+    box-shadow: none;
+    cursor: pointer ;
+}
+
+.read-button:hover {
+    background-image: none;
+    background-color: none;
+    box-shadow: none;
+    cursor: pointer;
+
+    /* filter black to green:  invert(59%) sepia(22%) saturate(2576%) hue-rotate(101deg) brightness(98%) contrast(91%);*/
+}
+
+.card img {
+    height: 20px;
+    margin-bottom: 3px; 
 }
 
 .author {
@@ -44,7 +92,6 @@ body {
     display: inline;
     margin-left: 0px;
     margin-right: 0px;
-
 }
 
 button, h1 {
@@ -82,7 +129,6 @@ button:hover {
     position: fixed;
     top: 20px;
     z-index: 9;
-
 }
 
 .form-container {
@@ -132,7 +178,7 @@ label[for=read] {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    }
+}
 
 /* Hide the browser's default checkbox */
 .container input {
@@ -144,7 +190,6 @@ label[for=read] {
     top: 23px;
     left: 5px;
     z-index: 1;
-
 }
 
 /* Create a custom checkbox */
@@ -196,11 +241,9 @@ label[for=read] {
     transform: rotate(45deg);
 } 
 
-
 .form-container > button {
     display: inline-block;
     margin: 75px 10px 20px 10px;
-
 }
 
 .btn {

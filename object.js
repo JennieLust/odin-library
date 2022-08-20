@@ -15,14 +15,10 @@ const bookContainer = document.querySelector(".book-container");
 const addButton = document.querySelector("#new-book-btn");
 const form = document.querySelector(".form-popup");
 
-
-
 let myLibrary = []
 /* retrieves stored library */
 var storedLibrary = JSON.parse(localStorage.getItem("my_library"));
 myLibrary = storedLibrary;
-
-
 
 /* book constructor */
 function Book(title, author, pages, read) {
@@ -79,6 +75,24 @@ function displayBooks() {
         var card = document.createElement("div");
         card.className = "card";
         bookContainer.appendChild(card);
+
+        const iconButtons = document.createElement("div");
+        iconButtons.className = "icon-buttons";
+
+        const btnRemove = document.createElement("button");
+        btnRemove.className = "remove-button";
+        
+        const iconRemove = document.createElement("img");
+        iconRemove.src = "./remove.png";
+/* change depending on read/not read */
+
+       const btnRead = document.createElement("button");
+        btnRead.className = "read-button";
+        const iconUnread = document.createElement("img");
+        iconUnread.src = "./eyeclosed.png"; /* ./eyeopen.png */
+       
+
+        
         /* iterates through the object and creates p items with property and value */
         Object.values(book).forEach(key => {
             /* ignores object functions when creating p items */
@@ -107,6 +121,14 @@ function displayBooks() {
                 };
             };   
         });
+
+        card.appendChild(iconButtons)
+        iconButtons.appendChild(btnRemove)
+        btnRemove.appendChild(iconRemove)
+        btnRead.appendChild(iconUnread)
+        iconButtons.appendChild(btnRead);
+    
+    
     });
 };
 
