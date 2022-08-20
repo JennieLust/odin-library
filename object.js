@@ -1,7 +1,10 @@
 const body = document.querySelector("body");
 const bookContainer = document.querySelector(".book-container");
+const addButton = document.querySelector("#new-book-btn")
 
-
+addButton.addEventListener('click', () => {
+    openForm();
+})
 
 let myLibrary = [];
 
@@ -16,6 +19,16 @@ Add a NEW BOOK button that brings up a form allowing users to input the details 
 
 
  */
+
+function openForm() {
+    document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+    document.getElementById("myForm").style.display = "none";
+}
+
+
 
 function displayBooks() {
 
@@ -65,6 +78,10 @@ function Book(title, author, pages, read) {
     }
 };
 
+
+
+
+
 function addBookToLibrary(book) {
     myLibrary.push(book);
 }
@@ -79,6 +96,11 @@ addBookToLibrary(bookTwo);
 addBookToLibrary(bookThree);
 addBookToLibrary(bookFour);
 addBookToLibrary(bookFive);
+
+
+
+
+
 console.log(myLibrary)
 
 displayBooks();

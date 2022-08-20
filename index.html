@@ -88,7 +88,7 @@
     }
 
     .form-popup {
-        
+        display: none;
         position: fixed;
         z-index: 9;
 
@@ -236,10 +236,10 @@
 </style>
 <body>
     <h1>My Library</h1>
-    <button class="button" id="new-book-btn">Add a Book</button>
+    <button class="button" id="new-book-btn" onClick="openForm()">Add a Book</button>
     <div class="book-container">
     </div>
-    <div class="form-popup">
+    <div class="form-popup" id="myForm">
         <form action="" class="form-container">
             <h1>New book</h1>
 
