@@ -1,43 +1,60 @@
-const body = document.querySelector("body");
-const bookContainer = document.querySelector(".book-container");
-const addButton = document.querySelector("#new-book-btn")
-const form = document.querySelector(".form-popup")
-
-
-
-addButton.addEventListener('click', (event) => {
-    openForm();
-})
-
-
-let myLibrary = [];
-
-/*
+/*  TODO
 
 Add a NEW BOOK button that brings up a form allowing users to input the details for the new book: 
     and anything else you might want.
 
 Add code that translates form values into javascript object
-    read form value
-    send to ?
-    create object w it
+    create object w it - Done, however only temporary objects are created
 
 Clear form when subm / closed 
 
  */
 
+const body = document.querySelector("body");
+const bookContainer = document.querySelector(".book-container");
+const addButton = document.querySelector("#new-book-btn");
+const form = document.querySelector(".form-popup");
+
+
+
+let myLibrary = []
+/* retrieves stored library */
+var storedLibrary = JSON.parse(localStorage.getItem("my_library"));
+myLibrary = storedLibrary;
+
+
+
+/* book constructor */
+function Book(title, author, pages, read) {
+    this.title = title
+    this.author = author
+    this.pages = pages
+    this.read = read
+    this.info = function() {
+        return title + " by " + author + ", " + pages + " pages, " + read
+    };
+};
+
+/* button which opens form  */
+addButton.addEventListener('click', (event) => {
+    openForm();
+});
+
 function openForm() {
     document.getElementById("myForm").style.display = "block";
-}
+};
 
 function closeForm() {
     document.getElementById("myForm").style.display = "none";
-}
+};
 
+/* on form submit/button click */
 form.addEventListener('submit', function(e) {
     e.preventDefault();
-    submitForm()})
+    submitForm()
+});
 
+let i = myLibrary.length;
 function submitForm(form) {
     var read = "";
     if (form.read.checked === true) {
@@ -45,17 +62,18 @@ function submitForm(form) {
     } else {
         read = "not read"
     }
+    
+    /* dynamically named variables for new books */
+    eval['book'+myLibrary.length] = new Book(form.title.value, form.author.value, form.pages.value, read)
 
-    var temp = new Book(form.title.value, form.author.value, form.pages.value, read)
-    addBookToLibrary(temp);
+    /* adds object to library and reloads display */
+    addBookToLibrary(eval['book'+myLibrary.length]);
     displayBooks();
-
-}
+};
 
 
 function displayBooks() {
-
-    /* iterates through myLibrary array and creates a grid item */
+    /* iterates through myLibrary array and creates grid items */
     bookContainer.innerHTML = "";
     myLibrary.forEach(book => {
         var card = document.createElement("div");
@@ -86,45 +104,33 @@ function displayBooks() {
                     text.className = "read";
                     text.innerText = `${key}.`;
                     card.appendChild(text);
-        }; };   
-        })
-    })
-} ;
-
-
-function Book(title, author, pages, read) {
-    this.title = title
-    this.author = author
-    this.pages = pages
-    this.read = read
-    this.info = function() {
-        return title + " by " + author + ", " + pages + " pages, " + read
-    }
+                };
+            };   
+        });
+    });
 };
-
-
-
-
 
 function addBookToLibrary(book) {
     myLibrary.push(book);
-}
+};
 
+/* Adds default books to library */
 var theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 295, 'not read')
 var bookTwo = new Book('Book Two', 'Author Two des Authorieras', 300, 'read')
 var bookThree = new Book('Book Three', 'Ano Nomies', 15, 'not read')
 var bookFour = new Book('Book Four', 'Ano Nomies', 15, 'not read')
 var bookFive = new Book('Book Four & Nine Point Nine', 'Ano Nomies', 10005, 'not read')
+
+/* comment out/remove if stored array is retrieved otherwise it'll keep adding these to the library 
 addBookToLibrary(theHobbit);
 addBookToLibrary(bookTwo);
 addBookToLibrary(bookThree);
 addBookToLibrary(bookFour);
 addBookToLibrary(bookFive);
+*/
 
-
-
-
-
-console.log(myLibrary)
-
+/* Calls display so it is loaded on page loag */
 displayBooks();
+
+localStorage.setItem("my_library", JSON.stringify(myLibrary)); /* Stores myLibrary as string */
+
