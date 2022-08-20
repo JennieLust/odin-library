@@ -80,6 +80,7 @@ button:hover {
 .form-popup {
     display: none;
     position: fixed;
+    top: 20px;
     z-index: 9;
 
 }
