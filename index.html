@@ -87,11 +87,54 @@
         box-shadow: 2px 2px 2px rgb(5, 56, 49);
     }
 
+    .form-popup {
+        
+        position: fixed;
+        z-index: 9;
+
+    }
+
+    .form-container {
+        max-width: 350px;
+        padding: 20px;
+        background-color: seagreen;
+        border-top-right-radius: 15px;
+        border-bottom-left-radius: 15px;
+        box-shadow: 2px 2px 2px rgb(5, 56, 49);
+    }
+
+    .form-container input[type=text], .form-container input[type=number] {
+
+    }
+
 </style>
 <body>
     <h1>My Library</h1>
     <button class="button" id="new-book-btn">Add a Book</button>
     <div class="book-container">
+    </div>
+    <div class="form-popup">
+        <form action="" class="form-container">
+            <h1>New book</h1>
+
+            <label for ="title">Title </label>
+            <input type="text" placeholder="Enter title" name="title" required>
+
+            <label for ="author">Author </label>
+            <input type="text" placeholder="Enter author" name="author" required>
+            
+            <label for ="pages">Page </label>
+            <input type="number" placeholder="Enter number of pages" name="pages" required>
+            
+            <label for ="read">Read?</label>
+            <input type="checkbox" name="read">
+            
+            <button type="submit" class="btn">Add new book</button>
+            <button type="button" class="btn-cancel" onClick="closeForm()">Close</button>
+        </form>
+
+
+
     </div>
 
 </body>
