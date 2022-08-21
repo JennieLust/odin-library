@@ -20,7 +20,7 @@ body {
     background-color: #2aad62;
     position: relative;
     padding: 20px;
-    padding-bottom: 40px;
+    padding-bottom: 50px;
     box-shadow: 2px 2px 2px #053831;
     border-left: 15px solid #1e673e;
     border-top-right-radius: 10px;
@@ -87,7 +87,7 @@ body {
     padding-bottom: 10px;
 }
 
-.read, .pages {
+.read, .pages, .genre {
     display: inline;
     margin-left: 0px;
     margin-right: 0px;
