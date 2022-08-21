@@ -26,8 +26,6 @@ body {
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
     border-image: linear-gradient(to bottom, rgb(30, 103, 62), greenyellow) 0 1;
-
-
 }
 
 .title {
@@ -46,7 +44,6 @@ body {
     justify-content: space-between;
     margin-top: auto;
     left: 12px;
-    
 }
 
 .remove-button, .read-button {
@@ -55,13 +52,21 @@ body {
     width: 30px;
     height: 30px;
     margin: 2px;
-    filter: invert(15%) sepia(10%) saturate(5193%) hue-rotate(131deg) brightness(97%) contrast(96%);
 }
 
+.remove-icon {
+    height: 20px;
+    margin-top: 3px;
+    filter: invert(100%) sepia(100%) saturate(2%) hue-rotate(88deg) brightness(109%) contrast(101%);
+}
+
+.read-icon {
+    height: 25px;
+}
 
 .remove-button:hover {
-    /* filter black to red */
-    filter: invert(27%) sepia(7%) saturate(4155%) hue-rotate(314deg) brightness(92%) contrast(86%);
+    filter: none;
+    filter: drop-shadow(1px 1px 2px rgba(53, 69, 46, 0.6));
     background-image: none;
     background-color: none;
     box-shadow: none;
@@ -73,13 +78,7 @@ body {
     background-color: none;
     box-shadow: none;
     cursor: pointer;
-
-    /* filter black to green:  invert(59%) sepia(22%) saturate(2576%) hue-rotate(101deg) brightness(98%) contrast(91%);*/
-}
-
-.card img {
-    height: 20px;
-    margin-bottom: 3px; 
+    filter: drop-shadow(1px 1px 2px rgba(53, 69, 46, 0.6));
 }
 
 .author {

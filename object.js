@@ -59,7 +59,7 @@ function submitForm(form) {
         read = "not read"
     }
     
-    /* dynamically named variables for new books */
+    /* dynamically names variables for new books */
     eval['book'+myLibrary.length] = new Book(form.title.value, form.author.value, form.pages.value, read)
 
     /* adds object to library and reloads display */
@@ -84,12 +84,19 @@ function displayBooks() {
         
         const iconRemove = document.createElement("img");
         iconRemove.src = "./remove.png";
-/* change depending on read/not read */
+        iconRemove.className = "remove-icon"
+        iconRemove.addEventListener('mouseover', () => {
+            iconRemove.style.filter = "invert(7%) sepia(26%) saturate(7057%) hue-rotate(347deg) brightness(98%) contrast(87%)"
+            iconRemove.addEventListener('mouseout', () => {
+                iconRemove.style.filter = "invert(100%) sepia(100%) saturate(2%) hue-rotate(88deg) brightness(109%) contrast(101%)"
+            })
+        })
 
        const btnRead = document.createElement("button");
         btnRead.className = "read-button";
         const iconUnread = document.createElement("img");
-        iconUnread.src = "./eyeclosed.png"; /* ./eyeopen.png */
+        iconUnread.className = "read-icon"
+         /* ./eyeopen.png */
        
 
         
@@ -118,6 +125,35 @@ function displayBooks() {
                     text.className = "read";
                     text.innerText = `${key}.`;
                     card.appendChild(text);
+                    if (key === "not read"){
+                        /* decides which read-icon to add */ 
+                        iconUnread.src = "./eyeopen.png"
+                        /* color:  black to green (TOO LIGHT) */
+                        iconUnread.style.filter = "invert(100%) sepia(100%) saturate(2%) hue-rotate(88deg) brightness(109%) contrast(101%)"
+                        /* On hover change icon and color */
+                        iconUnread.addEventListener('mouseover', () => {
+                            iconUnread.src = "./eyeclosed.png"
+                            iconUnread.style.filter = "invert(27%) sepia(7%) saturate(4155%) hue-rotate(314deg) brightness(92%) contrast(86%)"
+                            iconUnread.addEventListener('mouseout', () => {
+                                iconUnread.src = "./eyeopen.png"
+                                iconUnread.style.filter = "invert(100%) sepia(100%) saturate(2%) hue-rotate(88deg) brightness(109%) contrast(101%)"
+                            })
+                        });
+                    } else {
+                        /* decides which read-icon to add */ 
+                        iconUnread.src = "./eyeclosed.png";
+                         /* color:  black to red */
+                        iconUnread.style.filter = "invert(100%) sepia(100%) saturate(2%) hue-rotate(88deg) brightness(109%) contrast(101%)"
+                        /* On hover change icon and color */
+                        iconUnread.addEventListener('mouseover', () => {
+                            iconUnread.src = "./eyeopen.png"
+                            iconUnread.style.filter = "invert(59%) sepia(22%) saturate(2576%) hue-rotate(101deg) brightness(98%) contrast(91%)"
+                            iconUnread.addEventListener('mouseout', () => {
+                                iconUnread.src = "./eyeclosed.png";
+                                iconUnread.style.filter = "invert(100%) sepia(100%) saturate(2%) hue-rotate(88deg) brightness(109%) contrast(101%)"
+                            })
+                        });
+                    }
                 };
             };   
         });
@@ -132,9 +168,8 @@ function displayBooks() {
     });
 };
 
-function addBookToLibrary(book) {
-    myLibrary.push(book);
-};
+
+
 
 /* Adds default books to library */
 var theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 295, 'not read')
