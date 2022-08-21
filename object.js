@@ -1,8 +1,5 @@
 /*  TODO
 
-ISSUES: 
-    New object - genre is displayed before pages
-
 Long-term goals: 
     Add storage so new objects do not clear on reload
 
@@ -66,7 +63,7 @@ function submitForm(form) {
     }
     
     /* dynamically names variables for new books */
-    eval['book'+myLibrary.length] = new Book(form.title.value, form.author.value, form.genre.value, form.pages.value, read)
+    eval['book'+myLibrary.length] = new Book(form.title.value, form.author.value, form.pages.value, form.genre.value, read)
 
     /* adds object to library and reloads display */
     addBookToLibrary(eval['book'+myLibrary.length]);
