@@ -132,7 +132,7 @@ button:hover {
 
 .form-container {
     max-width: 350px;
-    height: 500px;
+    height: 540px;
     padding: 20px;
     background-color: seagreen;
     border-top-right-radius: 15px;
@@ -142,7 +142,7 @@ button:hover {
 
 .form-container input[type=text], .form-container input[type=number] {
     width: 90%;
-    padding: 15px;
+    padding: 10px;
     margin: 5px 0 22px 0;
     border: none;
     background: rgb(202, 248, 220);
