@@ -123,6 +123,11 @@ button:hover {
     box-shadow: 2px 2px 2px rgb(5, 56, 49);
 }
 
+.card:hover {
+    box-shadow: 7px 7px 2px rgb(5, 56, 49);
+    background: #27a15c;
+}
+
 .form-popup {
     display: none;
     position: fixed;
