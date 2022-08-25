@@ -98,6 +98,12 @@ function displayBooks() {
             iconRemove.addEventListener('mouseout', () => {
                 iconRemove.style.filter = "invert(100%) sepia(100%) saturate(2%) hue-rotate(88deg) brightness(109%) contrast(101%)"
             })
+        /* remove button action */    
+        iconRemove.addEventListener('click', () => {
+            console.log(book);
+            myLibrary.splice(book, 1)
+            displayBooks();
+        })
         });
         /* card read/unread button and icon */
         const btnRead = document.createElement("button");
