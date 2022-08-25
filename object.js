@@ -1,5 +1,8 @@
 /*  TODO
 
+Short-term goals: 
+    Make the read/unread button to function properly 
+
 Long-term goals: 
     Add storage so new objects do not clear on reload
 
@@ -154,6 +157,10 @@ function displayBooks() {
                                 iconUnread.src = "./eyeopen.png"
                                 iconUnread.style.filter = "invert(100%) sepia(100%) saturate(2%) hue-rotate(88deg) brightness(109%) contrast(101%)"
                             })
+                        iconUnread.addEventListener('click', () => {
+                            clickRead(book, key);
+                        }
+                        )
                         });
                     } else {
                         /* decides which read-icon to add */ 
@@ -169,6 +176,9 @@ function displayBooks() {
                                 iconUnread.style.filter = "invert(100%) sepia(100%) saturate(2%) hue-rotate(88deg) brightness(109%) contrast(101%)"
                             })
                         });
+                        iconUnread.addEventListener('click', () => {
+                            clickRead(book, key);
+                        })
                     }
                 };
             };   
@@ -181,6 +191,27 @@ function displayBooks() {
     });
 };
 
+/* sets new value on object read status */
+/* HOW DO I GET IT TO SHOW UP? make a function of the icon unread setter? */
+function clickRead(book, key) {
+    if (key === "read") {
+        /* object value not read */
+        for (let i = 0; i < myLibrary.length; i++) {
+            if (myLibrary[i] === book) {
+                myLibrary[i].read = "not read";
+            }
+        }
+        
+    } else {
+        /*  object value read */
+        for (let i = 0; i < myLibrary.length; i++) {
+            if (myLibrary[i] === book) {
+                myLibrary[i].read = "read";
+            }
+        }
+
+    }
+}
 
 
 
