@@ -1,14 +1,16 @@
 /*  TODO
 
-Short-term goals: 
-    Make the read/unread button to function properly 
 
 Long-term goals: 
+    Make grid dynamically add more columns
+
     Add storage so new objects do not clear on reload
 
     Clear form when subm / closed 
 
     Add accessibility
+
+    Better style?
 
     Organize code
 
@@ -159,6 +161,7 @@ function displayBooks() {
                             })
                         iconUnread.addEventListener('click', () => {
                             clickRead(book, key);
+                            displayBooks();
                         }
                         )
                         });
@@ -178,6 +181,7 @@ function displayBooks() {
                         });
                         iconUnread.addEventListener('click', () => {
                             clickRead(book, key);
+                            displayBooks();
                         })
                     }
                 };
